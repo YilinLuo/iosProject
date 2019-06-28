@@ -37,7 +37,7 @@ class ViewController: UIViewController, UISearchBarDelegate {
         searchBar.resignFirstResponder()
         dismiss(animated: true, completion: nil)
         
-        //create the search request
+        //create the search request: user type in a word and use the word to find place
         let searchRequest = MKLocalSearch.Request()
         searchRequest.naturalLanguageQuery = searchBar.text
         let activeSearch = MKLocalSearch(request: searchRequest)
@@ -56,7 +56,7 @@ class ViewController: UIViewController, UISearchBarDelegate {
                 let annotations = self.myMapView.annotations
                 self.myMapView.removeAnnotations(annotations)
                 
-                //getting data
+                //getting data, the latitude and longitude of the typed word's matching location
                 let latitude = response?.boundingRegion.center.latitude
                 
                  let longitude = response?.boundingRegion.center.longitude
